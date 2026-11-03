@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wfm-mcp-agent-example"
+version = "0.1.0"
+description = "A news research agent that reads the world's news through the World Feed Monitor MCP server."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=2.3,<3",
+    "anthropic>=2.4,<3",
+    "httpx2>=2.14",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=9", "ruff>=0.9"]
+
+[project.scripts]
+wfm-research = "wfm_agent.cli:main"
+
+[tool.setuptools]
+packages = ["wfm_agent"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM"]
