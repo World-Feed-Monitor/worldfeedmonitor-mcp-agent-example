@@ -137,9 +137,9 @@ To use another LLM provider, write a function like `research()` in `agent.py` ag
 
 | Tool | Arguments | Returns |
 | --- | --- | --- |
-| `search_news` | `keywords`, `title`, `country[]`, `language[]`, `macro_category[]`, `publisher_category[]`, `continent[]`, `continent_region[]`, `source[]`, `source_type[]`, `sector[]`, `has_image`, `from_date`, `to_date`, `sort`, `page` | 25 articles a page; the last day unless dates are given |
-| `get_latest_news` | `country[]`, `language[]`, `macro_category[]`, `source[]`, `page` | The newest articles from the last day |
-| `get_sources` | `country`, `page`, `per_page` | The publishers WFM reads |
+| `search_news` | `keywords`, `title`, `country[]`, `language[]`, `topic[]`, `original_category[]`, `continent[]`, `continent_region[]`, `publisher[]`, `publisher_type[]`, `sector[]`, `has_image`, `from_date`, `to_date`, `sort`, `page` | 25 articles a page; the last day unless dates are given |
+| `get_latest_news` | `country[]`, `language[]`, `topic[]`, `publisher[]`, `page` | The newest articles from the last day |
+| `get_publishers` | `country`, `page`, `per_page` | The publishers WFM reads |
 | `get_coverage` | `include[]` | Valid country, language and topic codes |
 
 Unknown arguments are refused, and the model is told why, so it can correct itself.

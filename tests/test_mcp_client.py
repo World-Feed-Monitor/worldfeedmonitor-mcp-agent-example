@@ -44,7 +44,7 @@ async def test_tools_are_discovered_with_their_schemas_and_cost_nothing() -> Non
     async with connect(fake) as wfm:
         tools = await wfm.list_tools()
 
-    assert [t.name for t in tools] == ["search_news", "get_latest_news", "get_sources", "get_coverage"]
+    assert [t.name for t in tools] == ["search_news", "get_latest_news", "get_publishers", "get_coverage"]
     assert tools[0].input_schema["additionalProperties"] is False
     assert "country" in tools[0].input_schema["properties"]
     assert fake.calls == []  # only tools/call is billed

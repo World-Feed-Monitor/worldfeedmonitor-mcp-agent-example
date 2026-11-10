@@ -5,8 +5,8 @@ Public, open-source example code. Keep it compact and easy to read.
 
 ## Verified MCP contract
 
-Taken from the WFM server code (laravel/mcp 0.4.1), 2026-11-03. Don't invent tools, arguments or fields; if the
-server changes, update this section first.
+Taken from the WFM server code (laravel/mcp 0.4.1), 2026-11-03; names updated for the publishers/topics rename,
+2026-11-10. Don't invent tools, arguments or fields; if the server changes, update this section first.
 
 - Endpoint: `https://api.worldfeedmonitor.com/mcp`, Streamable HTTP, JSON responses. GET returns 405 (no SSE stream).
   Protocol versions accepted: 2025-11-25, 2025-06-18, 2025-03-26. Use the `initialize` handshake (`mode="legacy"`).
@@ -17,14 +17,14 @@ server changes, update this section first.
   generic `MCPError(-32603)`; `WfmMcp` recovers the status with an httpx2 response hook.
 - Metering: only `tools/call` counts, one request per call. `initialize` and `tools/list` are free.
 - Tools (all reject unknown arguments; list filters take at most 20 values):
-  - `search_news`: keywords, title (≤255), macro_category[], publisher_category[], country[] (ISO-2/3),
-    language[] (ISO 639-1), continent[], continent_region[], source[], source_type[], sector[], has_image,
+  - `search_news`: keywords, title (≤255), topic[], original_category[], country[] (ISO-2/3),
+    language[] (ISO 639-1), continent[], continent_region[], publisher[], publisher_type[], sector[], has_image,
     from_date, to_date (YYYY-MM-DD), sort (relevance|desc|asc), page (1–1000, 25 per page). Last day by default.
-  - `get_latest_news`: macro_category[], country[], language[], source[], page. Newest first, last day.
-  - `get_sources`: country (2–3 letters), page, per_page (≤100, default 50).
-  - `get_coverage`: include[] of countries | languages | macro_categories.
+  - `get_latest_news`: topic[], country[], language[], publisher[], page. Newest first, last day.
+  - `get_publishers`: country (2–3 letters), page, per_page (≤100, default 50).
+  - `get_coverage`: include[] of countries | languages | topics; the result has a section per value.
 - Search results: `structuredContent` = `{meta, articles[]}`; article = id, title, url, published_at
-  (publisher's local time), published_timezone, author, summary (≤500 chars), image, source{key,name,url},
+  (publisher's local time), published_timezone, author, summary (≤500 chars), image, publisher{key,name,url},
   country{iso_2,iso_3,name}, language{code,name}, topics[{key,name}].
 - Tool-level failures are results with `isError: true` and a text message: validation errors, and a spent allowance,
   which also carries `structuredContent` `{window: minute|day|month, limit, retry_after}`.

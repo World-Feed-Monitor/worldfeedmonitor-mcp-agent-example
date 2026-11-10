@@ -33,7 +33,7 @@ async def test_claude_discovers_the_tools_calls_one_and_cites_what_it_returned()
     assert [t["name"] for t in first["tools"]] == [
         "search_news",
         "get_latest_news",
-        "get_sources",
+        "get_publishers",
         "get_coverage",
     ]
     assert first["tools"][0]["input_schema"]["additionalProperties"] is False

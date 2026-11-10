@@ -159,7 +159,7 @@ class WfmMcp:
                 ref=ref,
                 title=raw.get("title") or url,
                 url=url,  # kept exactly as the server sent it
-                publisher=(raw.get("source") or {}).get("name"),
+                publisher=(raw.get("publisher") or {}).get("name"),
                 country=(raw.get("country") or {}).get("name"),
                 published_at=raw.get("published_at"),
                 published_timezone=raw.get("published_timezone"),
@@ -169,7 +169,7 @@ class WfmMcp:
         return {
             "ref": ref,
             "title": raw.get("title"),
-            "publisher": (raw.get("source") or {}).get("name"),
+            "publisher": (raw.get("publisher") or {}).get("name"),
             "country": (raw.get("country") or {}).get("name"),
             "language": (raw.get("language") or {}).get("name"),
             "published_at": raw.get("published_at"),
