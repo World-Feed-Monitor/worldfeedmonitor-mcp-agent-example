@@ -1,6 +1,6 @@
 # World Feed Monitor · MCP research agent example
 
-A command-line **news research agent**. Ask it a question in plain words. Claude searches the world's news through the [World Feed Monitor](https://worldfeedmonitor.com) MCP server, then writes a short report in which every claim cites the article it came from.
+A command-line **news research agent**. Ask it a question in plain words. Claude searches the world's news through the [World Feed Monitor](https://worldfeedmonitor.com/?utm_source=github) MCP server, then writes a short report in which every claim cites the article it came from.
 
 ```text
 $ wfm-research "What are the latest AI developments in Japan?"
@@ -57,7 +57,7 @@ pip install -e .
 
 ### 1. A free World Feed Monitor account
 
-Sign up at [worldfeedmonitor.com/register](https://worldfeedmonitor.com/register) with an email address, GitHub or Google, then **confirm your email address**: the API and the MCP server answer only once it is confirmed.
+Sign up at [worldfeedmonitor.com/register](https://worldfeedmonitor.com/register?utm_source=github) with an email address, GitHub or Google, then **confirm your email address**: the API and the MCP server answer only once it is confirmed.
 
 ### 2. MCP credentials
 
@@ -177,9 +177,9 @@ The tests run the real MCP client session against a stand-in for the WFM server 
 
 ## Links
 
-- [MCP server overview](https://worldfeedmonitor.com/#mcp)
-- [API Playground](https://worldfeedmonitor.com/playground): try searches without an account
-- [REST API reference](https://worldfeedmonitor.com/docs)
+- [MCP server overview](https://worldfeedmonitor.com/?utm_source=github#mcp)
+- [API Playground](https://worldfeedmonitor.com/playground?utm_source=github): try searches without an account
+- [REST API reference](https://worldfeedmonitor.com/docs?utm_source=github)
 - [Next.js REST example](https://github.com/World-Feed-Monitor/worldfeedmonitor-nextjs-example)
 
 ## License
